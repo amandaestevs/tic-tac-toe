@@ -1,0 +1,133 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: lightgray;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    height: 100vh;
+    flex-direction: column;
+}
+
+h2 {
+    margin-bottom: 20px;
+}
+
+.board {
+    display: grid;
+    width: 30%;
+    height: 60%;
+    background-color: #fff;
+    border-radius: 15px;
+    grid-template-columns: repeat(3, 1fr);
+}    
+
+.cell {
+    border: 1px solid black;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.cell:first-child, .cell:nth-child(2), .cell:nth-child(3){
+    border-top: none;
+}
+
+.cell:nth-child(3n - 2), .cell:first-child{
+    border-left: none;
+}
+
+.cell:nth-child(3n){
+    border-right: none;
+}
+
+.cell:nth-child(n + 7){
+    border-bottom: none;
+}
+
+.x {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.x::after, .x::before {
+    content: "";
+    width: 70%;
+    height: 10%;
+    position: absolute;
+    background-color: black;
+}
+
+.x::after {
+    transform: rotate(45deg);
+}
+
+.x::before {
+    transform: rotate(-45deg);
+}
+
+.circle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.circle::after, .circle::before {
+    content: "";
+    border-radius: 50%;
+    position: absolute;
+}
+
+.circle::before {
+    width: 61%;
+    height: 61%;
+    background-color: #fff;
+    z-index: 2;
+}
+
+.circle::after {
+    width: 75%;
+    height: 75%;
+    background-color: black;
+}
+
+.circle, .x {
+    cursor: not-allowed;
+}
+      
+/* winning page */
+.game-over-page {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    height: 100vh;
+    width: 100vw;
+    position: absolute;
+    z-index: 3;
+}
+
+.game-over-page button {
+    padding: 15px 30px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    background-color: #2f52e4;
+    color: white;
+}
+
+.winning-message {
+    margin-bottom: 15px;
+    font-size: 1.7em;
+    font-weight: 900;
+    color: white;
+}
